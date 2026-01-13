@@ -1,0 +1,1 @@
+{"models": {"Logistic Regression": 0.7280643980973289, "Decision Tree": 0.7341383095499451, "KNN": 0.7111598975484815, "Random Forest": 0.6921331869740213}, "best_model": "Decision Tree"}

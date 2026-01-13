@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Mode - New Gradient Theme (#6968A6 to #CF9893) */
+    --background: 0 0% 100%;
+    --foreground: 220 25% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 20%;
+    
+    /* Primary gradient: #6968A6 (purple-blue) */
+    --primary: 241 25% 53%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary gradient: #CF9893 (pink-peach) */
+    --secondary: 5 37% 69%;
+    --secondary-foreground: 220 25% 15%;
+    
+    --muted: 240 20% 96%;
+    --muted-foreground: 220 15% 45%;
+    --accent: 241 30% 92%;
+    --accent-foreground: 241 25% 53%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 20% 90%;
+    --input: 240 20% 90%;
+    --ring: 241 25% 53%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark Mode - New Gradient Theme Adjusted */
+    --background: 220 30% 8%;
+    --foreground: 240 20% 98%;
+    --card: 220 30% 12%;
+    --card-foreground: 240 20% 98%;
+    --popover: 220 30% 12%;
+    --popover-foreground: 240 20% 98%;
+    
+    /* Primary gradient: Lighter version of #6968A6 */
+    --primary: 241 35% 63%;
+    --primary-foreground: 220 30% 8%;
+    
+    /* Secondary gradient: Lighter version of #CF9893 */
+    --secondary: 5 40% 75%;
+    --secondary-foreground: 220 30% 8%;
+    
+    --muted: 220 25% 18%;
+    --muted-foreground: 240 10% 65%;
+    --accent: 241 30% 25%;
+    --accent-foreground: 241 35% 63%;
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 25% 20%;
+    --input: 220 25% 20%;
+    --ring: 241 35% 63%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground transition-colors duration-200;
+    /* Enhanced gradient background using theme colors */
+    background-image: 
+      radial-gradient(ellipse 80% 50% at 50% 0%, hsla(241, 25%, 53%, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse 80% 50% at 50% 100%, hsla(5, 37%, 69%, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 50% at 0% 50%, hsla(241, 25%, 53%, 0.1) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 50% at 100% 50%, hsla(5, 37%, 69%, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 20% 80%, hsla(241, 25%, 53%, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsla(5, 37%, 69%, 0.08) 0%, transparent 50%);
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    background-position: 0% 0%, 0% 100%, 0% 0%, 100% 0%, 0% 0%, 100% 0%;
+    background-repeat: no-repeat;
+    position: relative;
+    min-height: 100vh;
+  }
+  
+  .dark body {
+    /* Enhanced background for dark mode - more visible */
+    background-image: 
+      radial-gradient(ellipse 80% 50% at 50% 0%, hsla(241, 35%, 63%, 0.2) 0%, transparent 50%),
+      radial-gradient(ellipse 80% 50% at 50% 100%, hsla(5, 40%, 75%, 0.2) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 50% at 0% 50%, hsla(241, 35%, 63%, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 50% at 100% 50%, hsla(5, 40%, 75%, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 20% 80%, hsla(241, 35%, 63%, 0.12) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsla(5, 40%, 75%, 0.12) 0%, transparent 50%);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-primary-foreground font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg;
+  }
+
+  .btn-primary-bright {
+    background: linear-gradient(to right, hsl(241, 35%, 63%), hsl(5, 40%, 75%));
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary hover:bg-secondary/80 text-secondary-foreground font-semibold py-3 px-6 rounded-lg transition-all duration-200 border border-secondary/50;
+  }
+  
+  .card {
+    @apply bg-card text-card-foreground rounded-lg shadow-md p-6 border border-border transition-colors duration-200;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-all duration-200 bg-background text-foreground;
+  }
+
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Gradient text utility */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+
+  /* Gradient background utility */
+  .gradient-bg {
+    @apply bg-gradient-to-r from-primary to-secondary;
+  }
+
+  /* Pattern overlay utility (optional, can be applied to specific sections) */
+  .pattern-overlay {
+    background-image: 
+      linear-gradient(to right, transparent 0%, rgba(var(--primary), 0.03) 50%, transparent 100%),
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(var(--primary), 0.02) 10px,
+        rgba(var(--primary), 0.02) 20px
+      );
+  }
+  
+  /* Alternative: Subtle mesh gradient background */
+  .mesh-background {
+    background: 
+      radial-gradient(at 27% 37%, hsl(var(--primary) / 0.15) 0px, transparent 0%),
+      radial-gradient(at 97% 21%, hsl(var(--secondary) / 0.15) 0px, transparent 50%),
+      radial-gradient(at 52% 99%, hsl(var(--primary) / 0.1) 0px, transparent 50%),
+      radial-gradient(at 10% 29%, hsl(var(--secondary) / 0.1) 0px, transparent 50%),
+      radial-gradient(at 97% 96%, hsl(var(--primary) / 0.08) 0px, transparent 50%),
+      radial-gradient(at 33% 50%, hsl(var(--secondary) / 0.08) 0px, transparent 50%),
+      radial-gradient(at 79% 53%, hsl(var(--primary) / 0.1) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  .select {
+    padding: 12px 40px 12px 16px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+}

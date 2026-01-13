@@ -1,0 +1,21 @@
+# ===== Python =====
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.env
+
+# ===== Jupyter =====
+.ipynb_checkpoints/
+
+# ===== Node / Next.js =====
+node_modules/
+.next/
+out/
+
+# ===== OS =====
+.DS_Store
+
+# ===== Logs =====
+*.log
