@@ -91,7 +91,7 @@ export default function Header() {
             </div>
 
             {/* Right side - Theme toggle and buttons */}
-            <div className="flex items-center space-x-2 sm:space-x-4">
+            <div className="flex items-center space-x-2 sm:space-x-4 ml-auto">
               <ThemeToggle />
               
               {/* Desktop Assess Button */}
@@ -102,22 +102,23 @@ export default function Header() {
                 </Link>
               </motion.div>
 
-              {/* Mobile Menu Toggle Button - Always Visible */}
+              {/* Mobile Menu Toggle Button - Always Visible on Mobile */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden p-2.5 hover:bg-muted rounded-lg transition-all duration-200 relative z-40"
-                aria-label="Toggle menu"
+                className="md:hidden inline-flex items-center justify-center p-2.5 hover:bg-muted rounded-lg transition-all duration-200 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary/50"
+                aria-label="Toggle navigation menu"
                 aria-expanded={mobileMenuOpen}
+                type="button"
               >
                 <motion.div
                   animate={{ rotate: mobileMenuOpen ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
-                  className="relative w-6 h-6"
+                  className="flex items-center justify-center"
                 >
                   {mobileMenuOpen ? (
-                    <X className="w-6 h-6" strokeWidth={2.5} />
+                    <X className="w-6 h-6 stroke-current" strokeWidth={2.5} />
                   ) : (
-                    <Menu className="w-6 h-6" strokeWidth={2.5} />
+                    <Menu className="w-6 h-6 stroke-current" strokeWidth={2.5} />
                   )}
                 </motion.div>
               </button>
@@ -127,29 +128,31 @@ export default function Header() {
       </motion.header>
 
       {/* Mobile Navigation Overlay */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {mobileMenuOpen && (
           <motion.div
+            key="overlay"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.2 }}
             onClick={closeMobileMenu}
-            className="fixed inset-0 bg-black/50 md:hidden z-30"
+            className="fixed inset-0 bg-black/50 md:hidden z-30 pointer-events-auto"
             aria-hidden="true"
           />
         )}
       </AnimatePresence>
 
       {/* Mobile Navigation Menu - Sliding Drawer */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {mobileMenuOpen && (
           <motion.div
+            key="drawer"
             initial={{ x: '100%', opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: '100%', opacity: 0 }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="fixed top-0 right-0 h-screen w-full max-w-sm bg-card border-l border-border shadow-xl md:hidden z-40 flex flex-col overflow-y-auto"
+            className="fixed inset-y-0 right-0 w-full max-w-sm bg-card border-l border-border shadow-2xl md:hidden z-40 flex flex-col overflow-y-auto pointer-events-auto"
           >
             {/* Menu Header */}
             <div className="flex items-center justify-between px-6 py-6 border-b border-border sticky top-0 bg-card">
