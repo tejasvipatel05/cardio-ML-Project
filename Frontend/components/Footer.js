@@ -23,15 +23,15 @@ export default function Footer() {
 
   return (
     <footer className="bg-card border-t border-border mt-auto">
-      <div className="container mx-auto px-6 py-12">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8">
           {/* Left Side - Logo and Description */}
-          <div className="md:col-span-1">
+          <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center mb-4">
-              <Heart className="w-6 h-6 text-destructive fill-destructive mr-2" />
-              <span className="text-2xl font-bold gradient-text">CardioML</span>
+              <Heart className="w-5 sm:w-6 h-5 sm:h-6 text-destructive fill-destructive mr-2" />
+              <span className="text-lg sm:text-2xl font-bold gradient-text">CardioML</span>
             </div>
-            <p className="text-sm text-muted-foreground mb-4">
+            <p className="text-xs sm:text-sm text-muted-foreground mb-4">
               Advanced cardiovascular predictive modeling for modern healthcare providers and proactive individuals.
             </p>
             <p className="text-xs text-muted-foreground">
@@ -48,8 +48,8 @@ export default function Footer() {
               viewport={{ once: true }}
               transition={{ delay: categoryIndex * 0.1 }}
             >
-              <h4 className="text-foreground font-semibold mb-4 uppercase text-sm">{category}</h4>
-              <ul className="space-y-2 text-sm">
+              <h4 className="text-foreground font-semibold mb-3 sm:mb-4 uppercase text-xs sm:text-sm">{category}</h4>
+              <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm">
                 {links.map((link) => {
                   const Icon = link.icon;
                   return (
@@ -70,8 +70,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom Links */}
-        <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0 flex flex-wrap gap-4">
+        <div className="border-t border-border pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div className="flex flex-wrap gap-3 sm:gap-4 justify-center sm:justify-start">
             <Link href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
               TERMS
             </Link>

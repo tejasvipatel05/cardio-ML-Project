@@ -124,16 +124,16 @@ export default function Assessment() {
   };
 
   return (
-    <div className="min-h-screen bg-background py-12">
-      <div className="container mx-auto px-6 max-w-4xl">
+    <div className="min-h-screen bg-background py-8 sm:py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-8"
+          className="mb-6 sm:mb-8"
         >
-          <h1 className="text-4xl font-bold text-foreground mb-2">Cardiovascular Risk Assessment</h1>
-          <p className="text-muted-foreground">Provide clinical data to generate a machine learning-based risk prediction.</p>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-2">Cardiovascular Risk Assessment</h1>
+          <p className="text-sm sm:text-base text-muted-foreground">Provide clinical data to generate a machine learning-based risk prediction.</p>
         </motion.div>
 
         <AnimatePresence>
@@ -181,10 +181,10 @@ export default function Assessment() {
               className="mb-8"
             >
               <div className="flex items-center mb-4">
-                <Users className="w-6 h-6 text-primary mr-3" />
-                <h2 className="text-2xl font-bold text-foreground">Demographics & Biometrics</h2>
+                <Users className="w-5 sm:w-6 h-5 sm:h-6 text-primary mr-3" />
+                <h2 className="text-xl sm:text-2xl font-bold text-foreground">Demographics & Biometrics</h2>
               </div>
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
+              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-6">
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Patient Name <span className="text-destructive">*</span>
@@ -213,7 +213,7 @@ export default function Assessment() {
                   </select>
                 </div>
               </div>
-              <div className="grid md:grid-cols-3 gap-6">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 <motion.div
                   whileFocus={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
@@ -301,7 +301,7 @@ export default function Assessment() {
                 <Stethoscope className="w-6 h-6 text-primary mr-3" />
                 <h2 className="text-2xl font-bold text-foreground">Vital Signs</h2>
               </div>
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
+              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-6">
                 <motion.div
                   whileFocus={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
@@ -339,7 +339,7 @@ export default function Assessment() {
                   />
                 </motion.div>
               </div>
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2 flex items-center">
                     <Droplets className="w-4 h-4 mr-1" />
@@ -385,7 +385,7 @@ export default function Assessment() {
                 <Activity className="w-6 h-6 text-primary mr-3" />
                 <h2 className="text-2xl font-bold text-foreground">Lifestyle Factors</h2>
               </div>
-              <div className="grid md:grid-cols-3 gap-6">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Smoking Status

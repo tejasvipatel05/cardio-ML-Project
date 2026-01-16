@@ -35,7 +35,7 @@ export default function Model() {
   const [activeTab, setActiveTab] = useState('metrics');
 
   useEffect(() => {
-    axios.get(api.endpoints.assessment)
+    axios.get("api/assessment")
       .then(response => {
         setModelInfo(response.data);
         setLoading(false);
@@ -84,17 +84,17 @@ export default function Model() {
   }
 
   return (
-    <div className="min-h-screen bg-background py-12">
-      <div className="container mx-auto px-6 max-w-6xl">
+    <div className="min-h-screen bg-background py-8 sm:py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-12"
+          className="mb-8 sm:mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Model Comparison & Best Selection</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">Model Comparison & Best Selection</h1>
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl">
             Rigorous evaluation across multiple machine learning architectures ensures the highest predictive accuracy for cardiovascular risk assessment.
           </p>
         </motion.div>
@@ -213,7 +213,7 @@ export default function Model() {
               </motion.div>
 
               {/* Why Random Forest Section and Final Accuracy */}
-              <div className="grid md:grid-cols-2 gap-8 mb-8">
+              <div className="grid sm:grid-cols-2 gap-4 sm:gap-8 mb-6 sm:mb-8">
                 {/* Why Random Forest? */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
@@ -306,9 +306,9 @@ export default function Model() {
               transition={{ duration: 0.3 }}
             >
               {/* Quick Metrics Summary */}
-              <motion.div className="card shadow-lg mb-8">
-                <h2 className="text-2xl font-bold mb-6 text-foreground">Detailed Performance Metrics</h2>
-                <div className="grid md:grid-cols-3 gap-6">
+              <motion.div className="card shadow-lg mb-6 sm:mb-8">
+                <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-foreground">Detailed Performance Metrics</h2>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                   {[
                     { label: 'Accuracy', value: (modelInfo.accuracy * 100).toFixed(1) + '%', color: 'text-primary', icon: TrendingUp },
                     { label: 'AUC-ROC', value: modelInfo.auc_roc?.toFixed(2) || '0.96', color: 'text-secondary', icon: BarChart3 },
@@ -354,7 +354,7 @@ export default function Model() {
               </motion.div>
 
               {/* Model Details, Hyperparameters, and Performance Cards */}
-              <div className="grid md:grid-cols-3 gap-6 mb-8">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
                 {/* Model Details Card */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
@@ -365,9 +365,9 @@ export default function Model() {
                 >
                   <div className="flex items-center mb-4">
                     <Database className="w-5 h-5 text-primary mr-2" />
-                    <h3 className="text-xl font-bold text-foreground">Model</h3>
+                    <h3 className="text-lg sm:text-xl font-bold text-foreground">Model</h3>
                   </div>
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     <div>
                       <p className="text-sm text-muted-foreground mb-1">Algorithm</p>
                       <p className="text-foreground font-semibold">{modelInfo?.model_name || 'Random Forest Classifier'}</p>

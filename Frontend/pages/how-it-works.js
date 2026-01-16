@@ -93,8 +93,8 @@ export default function HowItWorks() {
   }
 
   return (
-    <div className="min-h-screen bg-background py-12">
-      <div className="container mx-auto px-6 max-w-6xl">
+    <div className="min-h-screen bg-background py-8 sm:py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -102,16 +102,16 @@ export default function HowItWorks() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Model Methodology</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">Model Methodology</h1>
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto">
             CardioML utilizes a sophisticated ensemble of machine learning algorithms to evaluate cardiovascular risk. Explore the four-stage pipeline that transforms clinical data into actionable insights.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
           {/* Main Content - 4-Stage Pipeline */}
-          <div className="md:col-span-2">
-            <div className="space-y-6">
+          <div className="lg:col-span-2">
+            <div className="space-y-4 sm:space-y-6">
               {steps.map((step, index) => {
                 const Icon = step.icon;
                 return (

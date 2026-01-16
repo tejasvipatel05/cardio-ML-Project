@@ -133,7 +133,7 @@ export default function HealthInsights() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16"
         >
           {insights.map((insight, index) => {
             const Icon = insight.icon;
@@ -179,11 +179,11 @@ export default function HealthInsights() {
           transition={{ delay: 0.2 }}
           className="card mb-12 shadow-lg"
         >
-          <h2 className="text-3xl font-bold mb-6 text-foreground">How our Model Interprets Data</h2>
-          <p className="text-lg text-muted-foreground mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-foreground">How our Model Interprets Data</h2>
+          <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8">
             Unlike traditional risk scores like Framingham or SCORE2 which use static coefficients, CardioML uses <strong className="text-foreground">XGBoost and Neural Network ensembles</strong> to identify complex, non-linear relationships between these factors.
           </p>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-8">
             {[
               {
                 icon: BarChart3,
