@@ -66,7 +66,7 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -75,7 +75,7 @@ export default function Home() {
               <Shield className="w-4 h-4 mr-2" />
               <span className="hidden sm:inline">HIPAA COMPLIANT & CLINICAL GRADE</span>
               <span className="sm:hidden">HIPAA COMPLIANT</span>
-            </motion.div>
+            </motion.div> */}
             
             <motion.h1
               initial={{ opacity: 0, y: 20 }}

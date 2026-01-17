@@ -91,7 +91,7 @@ export default function Header() {
             </div>
 
             {/* Right side - Theme toggle and buttons */}
-            <div className="flex items-center space-x-2 sm:space-x-4 ml-auto">
+            <div className="flex items-center justify-end space-x-2 sm:space-x-4 flex-1">
               <ThemeToggle />
               
               {/* Desktop Assess Button */}
