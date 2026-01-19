@@ -46,14 +46,6 @@ export default function Model() {
       });
   }, []);
 
-  const models = [
-    { name: 'Logistic Regression', accuracy: 85.2, selected: false },
-    { name: 'Support Vector Machine (SVM)', accuracy: 86.1, selected: false },
-    { name: 'Naive Bayes', accuracy: 85.2, selected: false },
-    { name: 'Decision Tree', accuracy: 79.0, selected: false },
-    { name: 'Random Forest', accuracy: 90.1, selected: true },
-  ];
-
   if (loading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
@@ -173,41 +165,28 @@ export default function Model() {
                     </tr>
                   </thead>
                   <tbody>
-                    {models.map((model, index) => (
-                      <motion.tr
-                        key={index}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.2 + index * 0.05 }}
-                        whileHover={{ backgroundColor: 'hsl(var(--muted))', scale: 1.01 }}
-                        className={cn(
-                          "border-b border-border transition-colors",
-                          model.selected && "bg-primary/5"
-                        )}
-                      >
-                        <td className="py-4 px-6 text-foreground font-medium">{model.name}</td>
-                        <td className={cn(
-                          "py-4 px-6 text-right font-semibold",
-                          model.selected ? 'text-primary text-lg' : 'text-foreground'
-                        )}>
-                          {model.accuracy}%
-                        </td>
-                        <td className="py-4 px-6 text-right">
-                          {model.selected ? (
-                            <motion.span
-                              initial={{ scale: 0 }}
-                              animate={{ scale: 1 }}
-                              className="inline-flex items-center bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-semibold space-x-1"
-                            >
-                              <CheckCircle2 className="w-3 h-3" />
-                              <span>CHOSEN MODEL</span>
-                            </motion.span>
-                          ) : (
-                            <span className="text-muted-foreground">-</span>
-                          )}
-                        </td>
-                      </motion.tr>
-                    ))}
+                    <motion.tr
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.2 }}
+                      whileHover={{ backgroundColor: 'hsl(var(--muted))', scale: 1.01 }}
+                      className="border-b border-border transition-colors bg-primary/5"
+                    >
+                      <td className="py-4 px-6 text-foreground font-medium">{modelInfo?.model_name || 'Random Forest Classifier'}</td>
+                      <td className="py-4 px-6 text-right font-semibold text-primary text-lg">
+                        {((modelInfo?.accuracy || 0.942) * 100).toFixed(1)}%
+                      </td>
+                      <td className="py-4 px-6 text-right">
+                        <motion.span
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          className="inline-flex items-center bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-semibold space-x-1"
+                        >
+                          <CheckCircle2 className="w-3 h-3" />
+                          <span>CHOSEN MODEL</span>
+                        </motion.span>
+                      </td>
+                    </motion.tr>
                   </tbody>
                 </table>
               </motion.div>
@@ -233,7 +212,7 @@ export default function Model() {
                     <h2 className="text-2xl font-bold text-foreground">Why {modelInfo?.model_name || 'Random Forest'}?</h2>
                   </div>
                   <p className="text-muted-foreground mb-6">
-                    {modelInfo?.model_name || 'Random Forest'} was selected as our best-performing model due to its superior accuracy of {modelInfo?.accuracy ? (modelInfo.accuracy * 100).toFixed(1) : '94.2'}%. This ensemble method combines multiple decision trees to create a robust predictive model that handles non-linear relationships and reduces overfitting, making it ideal for clinical risk assessment.
+                    {modelInfo?.model_name || 'Random Forest'} was selected as our best-performing model due to its superior accuracy of {((modelInfo?.accuracy || 0.942) * 100).toFixed(1)}%. This ensemble method combines multiple decision trees to create a robust predictive model that handles non-linear relationships and reduces overfitting, making it ideal for clinical risk assessment.
                   </p>
                   <div className="grid grid-cols-3 gap-4">
                     {[
@@ -273,7 +252,7 @@ export default function Model() {
                       transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
                       className="text-7xl font-bold mb-4"
                     >
-                      {modelInfo?.accuracy ? (modelInfo.accuracy * 100).toFixed(1) : '94.2'}%
+                      {((modelInfo?.accuracy || 0.942) * 100).toFixed(1)}%
                     </motion.div>
                     <motion.div
                       initial={{ opacity: 0 }}
@@ -310,9 +289,9 @@ export default function Model() {
                 <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-foreground">Detailed Performance Metrics</h2>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                   {[
-                    { label: 'Accuracy', value: (modelInfo.accuracy * 100).toFixed(1) + '%', color: 'text-primary', icon: TrendingUp },
-                    { label: 'AUC-ROC', value: modelInfo.auc_roc?.toFixed(2) || '0.96', color: 'text-secondary', icon: BarChart3 },
-                    { label: 'F1-Score', value: modelInfo.f1_score?.toFixed(2) || '0.91', color: 'text-primary', icon: Award },
+                    { label: 'Accuracy', value: ((modelInfo?.accuracy || 0.942) * 100).toFixed(1) + '%', color: 'text-primary', icon: TrendingUp },
+                    { label: 'AUC-ROC', value: (modelInfo?.auc_roc || 0.96).toFixed(2), color: 'text-secondary', icon: BarChart3 },
+                    { label: 'F1-Score', value: (modelInfo?.f1_score || 0.91).toFixed(2), color: 'text-primary', icon: Award },
                   ].map((metric, index) => (
                     <motion.div
                       key={index}
@@ -489,7 +468,7 @@ export default function Model() {
                           <Info className="w-4 h-4 text-muted-foreground" />
                         </div>
                         <span className="text-sm font-semibold text-foreground">
-                          {(modelInfo?.f1_score || 0.91).toFixed(1)}%
+                          {((modelInfo?.f1_score || 0.91) * 100).toFixed(1)}%
                         </span>
                       </div>
                       <div className="w-full bg-muted rounded-full h-2.5 overflow-hidden">
